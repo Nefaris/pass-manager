@@ -18,9 +18,27 @@ export class AppController {
     @Res() res: Response,
     @Body() data: { name: string; username: string; password: string },
   ) {
-    const created = await this.prisma.password.create({
+    await this.prisma.password.create({
       data: {
         name: data.name,
+        username: data.username,
+        password: data.password,
+      },
+    });
+
+    res.redirect('/');
+  }
+
+  @Post('/update-password')
+  async updatePassword(
+    @Res() res: Response,
+    @Body() data: { id: string; username: string; password: string },
+  ) {
+    await this.prisma.password.update({
+      where: {
+        id: data.id,
+      },
+      data: {
         username: data.username,
         password: data.password,
       },
