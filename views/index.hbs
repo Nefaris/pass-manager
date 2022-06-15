@@ -8,11 +8,11 @@
   </head>
   <body class="text-gray-700">
     <main class="container mx-auto px-4 py-12">
-      <h1 class="text-4xl font-bold">Password manager</h1>
+      <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold">Password manager</h1>
 
-      <div class="flex mt-4 gap-8">
-        <div class="w-3/4">
-          <ul class="grid grid-cols-3 gap-4">
+      <div class="flex flex-col-reverse lg:flex-row mt-4 gap-8">
+        <div class="lg:w-2/3 xl:w-3/4">
+          <ul class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4">
             {{#each passwords}}
               <li>
                 <form method="post" class="flex flex-col gap-2 rounded border-2 border-gray-700 p-4">
@@ -21,7 +21,7 @@
 
                   <div class="flex flex-col gap-2">
                     <div class="pass-entry flex gap-2 justify-between border-2 rounded border-gray-700 py-1 px-2">
-                      <input name="username" class="pass-entry-input lex-1" autocomplete="off" type="text" value="{{username}}">
+                      <input name="username" class="pass-entry-input flex-1" autocomplete="off" type="text" value="{{username}}">
                       <button type="button" class="pass-entry-copy bg-gray-700 hover:bg-gray-800 text-white rounded py-1 px-3">Copy</button>
                     </div>
                     <div class="pass-entry flex gap-2 justify-between border-2 rounded border-gray-700 py-1 px-2">
@@ -40,7 +40,7 @@
           </ul>
         </div>
 
-        <form action="/add-password" method="post" class="w-1/4">
+        <form action="/add-password" method="post" class="lg:w-1/3 xl:w-1/4">
           <div class="flex flex-col gap-2 rounded border-2 border-gray-700 p-4">
             <p class="text-lg font-bold">Add new password</p>
 
