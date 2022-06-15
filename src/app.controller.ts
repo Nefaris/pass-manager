@@ -26,8 +26,12 @@ export class AppController {
       },
     });
 
-    console.log(created);
+    res.redirect('/');
+  }
 
+  @Post('/delete-password')
+  async deletePassword(@Res() res: Response, @Body() data: { id: string }) {
+    await this.prisma.password.delete({ where: { id: data.id } });
     res.redirect('/');
   }
 }

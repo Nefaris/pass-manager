@@ -14,24 +14,27 @@
         <div class="w-3/4">
           <ul class="grid grid-cols-3 gap-4">
             {{#each passwords}}
-              <li class="flex flex-col gap-2 rounded border-2 border-gray-700 p-4">
-                <p class="text-lg font-bold">{{name}}</p>
+              <li>
+                <form method="post" class="flex flex-col gap-2 rounded border-2 border-gray-700 p-4">
+                  <input type="hidden" name="id" value="{{id}}">
+                  <p class="text-lg font-bold">{{name}}</p>
 
-                <div class="flex flex-col gap-2">
-                  <div class="flex gap-2 justify-between border-2 rounded border-gray-700 py-1 px-2">
-                    <input class="flex-1" autocomplete="off" type="text" value="{{username}}">
-                    <button type="button" class="bg-gray-700 hover:bg-gray-800 text-white rounded py-1 px-3">Copy</button>
+                  <div class="flex flex-col gap-2">
+                    <div class="flex gap-2 justify-between border-2 rounded border-gray-700 py-1 px-2">
+                      <input class="flex-1" autocomplete="off" type="text" value="{{username}}">
+                      <button type="button" class="bg-gray-700 hover:bg-gray-800 text-white rounded py-1 px-3">Copy</button>
+                    </div>
+                    <div class="flex gap-2 justify-between border-2 rounded border-gray-700 py-1 px-2">
+                      <input class="flex-1" autocomplete="off" type="password" value="{{password}}">
+                      <button type="button" class="bg-gray-700 hover:bg-gray-800 text-white rounded py-1 px-3">Copy</button>
+                    </div>
                   </div>
-                  <div class="flex gap-2 justify-between border-2 rounded border-gray-700 py-1 px-2">
-                    <input class="flex-1" autocomplete="off" type="password" value="{{password}}">
-                    <button type="button" class="bg-gray-700 hover:bg-gray-800 text-white rounded py-1 px-3">Copy</button>
-                  </div>
-                </div>
 
-                <div>
-                  <button class="border border-gray-700 bg-green-500 hover:bg-green-600 text-white rounded py-1 px-3">Save</button>
-                  <button class="border border-gray-700 bg-red-500 hover:bg-red-600 text-white rounded py-1 px-3">Delete</button>
-                </div>
+                  <div>
+                    <button type="submit" formaction="/update-password" class="border border-gray-700 bg-green-500 hover:bg-green-600 text-white rounded py-1 px-3">Save</button>
+                    <button type="submit" formaction="/delete-password" class="border border-gray-700 bg-red-500 hover:bg-red-600 text-white rounded py-1 px-3">Delete</button>
+                  </div>
+                </form>
               </li>
             {{/each}}
           </ul>
