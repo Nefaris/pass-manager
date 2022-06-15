@@ -20,13 +20,13 @@
                   <p class="text-lg font-bold">{{name}}</p>
 
                   <div class="flex flex-col gap-2">
-                    <div class="flex gap-2 justify-between border-2 rounded border-gray-700 py-1 px-2">
-                      <input name="username" class="flex-1" autocomplete="off" type="text" value="{{username}}">
-                      <button type="button" class="bg-gray-700 hover:bg-gray-800 text-white rounded py-1 px-3">Copy</button>
+                    <div class="pass-entry flex gap-2 justify-between border-2 rounded border-gray-700 py-1 px-2">
+                      <input name="username" class="pass-entry-input lex-1" autocomplete="off" type="text" value="{{username}}">
+                      <button type="button" class="pass-entry-copy bg-gray-700 hover:bg-gray-800 text-white rounded py-1 px-3">Copy</button>
                     </div>
-                    <div class="flex gap-2 justify-between border-2 rounded border-gray-700 py-1 px-2">
-                      <input name="password" class="flex-1" autocomplete="off" type="password" value="{{password}}">
-                      <button type="button" class="bg-gray-700 hover:bg-gray-800 text-white rounded py-1 px-3">Copy</button>
+                    <div class="pass-entry flex gap-2 justify-between border-2 rounded border-gray-700 py-1 px-2">
+                      <input name="password" class="pass-entry-input flex-1" autocomplete="off" type="password" value="{{password}}">
+                      <button type="button" class="pass-entry-copy bg-gray-700 hover:bg-gray-800 text-white rounded py-1 px-3">Copy</button>
                     </div>
                   </div>
 
@@ -60,5 +60,12 @@
     </main>
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      document.querySelectorAll(".pass-entry").forEach((passEntry) => {
+        const input = passEntry.querySelector(".pass-entry-input");
+        const copy = passEntry.querySelector(".pass-entry-copy");
+        copy.addEventListener("click", () => navigator.clipboard.writeText(input.value));
+      });
+    </script>
   </body>
 </html>
