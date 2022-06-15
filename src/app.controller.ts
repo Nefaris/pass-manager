@@ -1,15 +1,26 @@
 import { Body, Controller, Get, Post, Render, Res } from '@nestjs/common';
-import { PrismaService } from './prisma.service';
 import { Response } from 'express';
+import { PrismaService } from './prisma.service';
+import { CryptoService } from './crypto.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly crypto: CryptoService,
+  ) {}
 
   @Get()
   @Render('index')
   async index() {
-    const passwords = await this.prisma.password.findMany();
+    const dbPasswords = await this.prisma.password.findMany();
+    const passwords = dbPasswords.map((dbPassword) => ({
+      id: dbPassword.id,
+      name: dbPassword.name,
+      username: dbPassword.username,
+      password: this.crypto.decrypt(dbPassword.password),
+    }));
+
     return { passwords };
   }
 
@@ -22,7 +33,7 @@ export class AppController {
       data: {
         name: data.name,
         username: data.username,
-        password: data.password,
+        password: this.crypto.encrypt(data.password),
       },
     });
 
@@ -40,7 +51,7 @@ export class AppController {
       },
       data: {
         username: data.username,
-        password: data.password,
+        password: this.crypto.encrypt(data.password),
       },
     });
 
