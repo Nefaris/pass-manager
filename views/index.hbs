@@ -15,22 +15,22 @@
           <ul class="grid grid-cols-3 gap-4">
             {{#each passwords}}
               <li class="flex flex-col gap-2 rounded border-2 border-gray-700 p-4">
-                <p class="text-lg font-bold">Name</p>
+                <p class="text-lg font-bold">{{name}}</p>
 
                 <div class="flex flex-col gap-2">
                   <div class="flex gap-2 justify-between border-2 rounded border-gray-700 py-1 px-2">
-                    <input class="flex-1" autocomplete="off" type="text" value="Example login">
+                    <input class="flex-1" autocomplete="off" type="text" value="{{username}}">
                     <button type="button" class="bg-gray-700 hover:bg-gray-800 text-white rounded py-1 px-3">Copy</button>
                   </div>
                   <div class="flex gap-2 justify-between border-2 rounded border-gray-700 py-1 px-2">
-                    <input class="flex-1" autocomplete="off" type="password" value="example password">
+                    <input class="flex-1" autocomplete="off" type="password" value="{{password}}">
                     <button type="button" class="bg-gray-700 hover:bg-gray-800 text-white rounded py-1 px-3">Copy</button>
                   </div>
                 </div>
 
                 <div>
-                  <button class="bg-green-500 hover:bg-green-600 text-white rounded py-1 px-3">Save</button>
-                  <button class="bg-red-500 hover:bg-red-600 text-white rounded py-1 px-3">Delete</button>
+                  <button class="border border-gray-700 bg-green-500 hover:bg-green-600 text-white rounded py-1 px-3">Save</button>
+                  <button class="border border-gray-700 bg-red-500 hover:bg-red-600 text-white rounded py-1 px-3">Delete</button>
                 </div>
               </li>
             {{/each}}
@@ -48,8 +48,8 @@
             </div>
 
             <div>
-              <button type="submit" class="bg-green-500 hover:bg-green-600 text-white rounded py-1 px-3">Save</button>
-              <button type="reset" class="bg-yellow-500 hover:bg-yellow-600 text-white rounded py-1 px-3">Reset</button>
+              <button type="submit" class="border border-gray-700 bg-green-500 hover:bg-green-600 text-white rounded py-1 px-3">Save</button>
+              <button type="reset" class="border border-gray-700 bg-yellow-500 hover:bg-yellow-600 text-white rounded py-1 px-3">Reset</button>
             </div>
           </div>
         </form>
